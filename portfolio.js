@@ -381,15 +381,18 @@
 
         // Clone the desktop nav links
         const links = [
-          { href: '#about',      label: 'About'         },
-          { href: '#education',  label: 'Education'     },
-          { href: '#work',       label: 'Areas of Work' },
-          { href: '#experience', label: 'Experience'    },
-          { href: '#research',   label: 'Research'      },
-          { href: '#analytics',  label: 'Analytics'     },
-          { href: '#creative',   label: 'Creative Work' },
-          { href: '#leadership', label: 'Leadership'    },
-          { href: '#contact',    label: 'Contact'       }
+          { href: '#about',          label: 'About'              },
+          { href: '#education',      label: 'Education'          },
+          { href: '#work',           label: 'Areas of Work'      },
+          { href: '#experience',     label: 'Experience'         },
+          { href: '#research',       label: 'Research'           },
+          { href: '#analytics',      label: 'Analytics'          },
+          { href: '#creative',       label: 'Creative Work'      },
+          { href: '#leadership',     label: 'Leadership'         },
+          { href: '#beyond',         label: 'Beyond Work'        },
+          { href: '#certifications', label: 'Certifications'     },
+          { href: '#academic',       label: 'Academic Excellence'},
+          { href: '#contact',        label: 'Contact'            }
         ];
 
         links.forEach(function (l) {
@@ -553,8 +556,8 @@
     const REVEAL_GROUPS = [
       { section: '.section--about',      sel: '.about__text p, .about__attr-item'                  },
       { section: '.section--education',  sel: '.edu__node-content'                                  },
-      { section: '.section--work',       sel: '.work__card'                                         },
-      { section: '.section--experience', sel: '.exp__case-header, .exp__field, .exp__addendum-inner'},
+      { section: '.section--work',       sel: '.work__card'                                              },
+      { section: '.section--experience', sel: '.exp__card'                                               },
       { section: '.section--research',   sel: '.research__text p, .research__project, .research__ongoing' },
       { section: '.section--analytics',  sel: '.analytics__intro p, .analytics__domain, .analytics__tool' },
       { section: '.section--creative',   sel: '.creative__item, .creative__archive-link'            },

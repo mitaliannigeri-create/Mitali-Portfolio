@@ -2845,3 +2845,729 @@ footer {
    Version: 1.0 — Production
    Total sections: 28
    ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   REDESIGN ITERATION — VISUAL DIRECTION CHANGES
+   ─────────────────────────────────────────────────────────────────────────
+   1.  Global palette — lighten dark sections to ivory/butter/beige
+   2.  About traits grid
+   3.  Work cards — icon + compact layout
+   4.  Experience visual cards
+   5.  Research — publication cards, methods, interests
+   6.  Academic Excellence — hero stat + milestone timeline
+   7.  Dark section softening
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. GLOBAL PALETTE SHIFT ─────────────────────────────────────────────── */
+
+/* Research section: soften from full navy to deep-but-warm dark */
+.section--research {
+  background: #1C2030;
+}
+[data-theme="dark"] .section--research {
+  background: #0E1218;
+}
+
+/* Contact section: soften from hard navy */
+.section--contact {
+  background: #1C2436;
+}
+[data-theme="dark"] .section--contact {
+  background: #0A0F18;
+}
+
+/* Experience section: warm ivory instead of beige-alt */
+.section--experience {
+  background: var(--color-ivory);
+}
+[data-theme="dark"] .section--experience {
+  background: var(--bg-alt);
+}
+
+/* Analytics section: warm beige */
+.section--analytics {
+  background: #FBF8F0;
+}
+[data-theme="dark"] .section--analytics {
+  background: var(--bg-alt);
+}
+
+/* Leadership section: warm white */
+.section--leadership {
+  background: #FEFCF7;
+}
+[data-theme="dark"] .section--leadership {
+  background: var(--bg-alt);
+}
+
+/* Beyond work: light warm ivory */
+.section--beyond {
+  background: var(--color-ivory);
+}
+
+/* Certs: warm beige */
+.section--certs {
+  background: #FBF8F0;
+}
+
+/* Academic section: butter-tinted */
+.section--academic {
+  background: #FDFAF0;
+}
+[data-theme="dark"] .section--academic {
+  background: var(--bg-page);
+}
+
+
+/* ── 2. ABOUT TRAIT GRID ─────────────────────────────────────────────────── */
+
+.about__trait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+.about__trait {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background var(--dur-fast), border-color var(--dur-fast);
+}
+.about__trait:hover {
+  background: var(--butter);
+  border-color: var(--gold-dim);
+}
+[data-theme="dark"] .about__trait:hover {
+  background: var(--butter-mid);
+}
+.about__trait-icon {
+  color: var(--gold-dim);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about__trait span {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+
+/* ── 3. WORK CARDS — ICON + COMPACT ─────────────────────────────────────── */
+
+.work__card {
+  padding: var(--sp-6);
+  gap: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+}
+.work__card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--butter);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-navy);
+  flex-shrink: 0;
+  margin-bottom: var(--sp-2);
+  transition: background var(--dur-mid);
+}
+[data-theme="dark"] .work__card-icon {
+  background: var(--butter-mid);
+  color: var(--text-primary);
+}
+.work__card:hover .work__card-icon {
+  background: var(--butter-mid);
+}
+.work__card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+.work__card-desc {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+  margin: 0;
+}
+.work__card-proof {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  line-height: 1.5;
+}
+.work__card-proof a {
+  color: var(--text-link);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast);
+}
+.work__card-proof a:hover {
+  border-color: var(--gold);
+}
+
+
+/* ── 4. EXPERIENCE VISUAL CARDS ─────────────────────────────────────────── */
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp__card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--dur-mid);
+}
+.exp__card:last-child {
+  border-bottom: none;
+}
+.exp__card:nth-child(even) {
+  background: var(--bg-alt);
+}
+[data-theme="dark"] .exp__card:nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+.exp__card:hover {
+  background: #FBF8EF;
+}
+[data-theme="dark"] .exp__card:hover {
+  background: rgba(255,255,255,0.04);
+}
+.exp__card--minor {
+  grid-template-columns: 200px 1fr;
+  opacity: 0.85;
+}
+
+/* Logo / colour block */
+.exp__card-logo {
+  background: var(--logo-bg, var(--color-navy));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  flex-shrink: 0;
+}
+.exp__card-logo-letter {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 400;
+  color: var(--logo-text, #fff);
+  opacity: 0.9;
+  z-index: 1;
+  position: relative;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.exp__card-logo-pattern {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card body */
+.exp__card-body {
+  padding: var(--sp-8) var(--sp-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  justify-content: center;
+}
+
+/* Meta row */
+.exp__card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.exp__card-org {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--sp-1);
+}
+.exp__card-role {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-1);
+}
+.exp__card-location {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.exp__card-period {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--text-meta);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: var(--sp-1);
+}
+
+/* Summary sentence */
+.exp__card-summary {
+  font-size: var(--text-sm);
+  line-height: 1.72;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 620px;
+}
+.exp__card-summary a {
+  color: var(--text-link);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast);
+}
+.exp__card-summary a:hover {
+  border-color: var(--gold);
+}
+
+/* Outcome chips */
+.exp__card-outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.exp__outcome {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.exp__outcome-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+  line-height: 1;
+}
+
+/* Tag row */
+.exp__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
+.exp__tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  padding: 2px var(--sp-3);
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast);
+}
+.exp__card:hover .exp__tag {
+  background: var(--butter);
+  border-color: var(--gold-dim);
+  color: var(--color-navy);
+}
+[data-theme="dark"] .exp__tag {
+  background: var(--bg-dark);
+}
+[data-theme="dark"] .exp__card:hover .exp__tag {
+  background: var(--butter-mid);
+  color: var(--color-navy);
+}
+
+
+/* ── 5. RESEARCH — PUBLICATION CARDS, METHODS, INTERESTS ────────────────── */
+
+/* Interest pills strip */
+.research__interests-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-10);
+}
+.research__interest-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(212,180,106,0.10);
+  border: 1px solid rgba(212,180,106,0.25);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: 999px;
+}
+
+/* Methods row */
+.research__methods {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-10);
+  padding: var(--sp-6) var(--sp-8);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,180,106,0.15);
+}
+.research__method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: 1;
+}
+.research__method-icon {
+  color: rgba(250,247,240,0.5);
+}
+.research__method--result .research__method-icon {
+  color: var(--gold);
+}
+.research__method-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(250,247,240,0.55);
+  text-align: center;
+}
+.research__method--result .research__method-label {
+  color: var(--gold);
+}
+.research__method-sep {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: rgba(212,180,106,0.35);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* Publication card grid */
+.research__pub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-8);
+}
+.research__pub-card {
+  border: 1px solid rgba(212,180,106,0.20);
+  overflow: hidden;
+  transition: border-color var(--dur-mid), transform var(--dur-mid);
+}
+.research__pub-card:hover {
+  border-color: rgba(212,180,106,0.50);
+  transform: translateY(-2px);
+}
+.research__pub-cover {
+  height: 160px;
+  overflow: hidden;
+}
+.research__pub-body {
+  padding: var(--sp-6);
+}
+.research__pub-type {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--sp-3);
+}
+.research__pub-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: #FAF7F0;
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.005em;
+}
+.research__pub-abstract {
+  font-size: var(--text-sm);
+  line-height: 1.70;
+  color: rgba(250,247,240,0.58);
+  margin-bottom: var(--sp-4);
+}
+.research__pub-meta {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.research__pub-method {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(250,247,240,0.35);
+}
+
+/* Ongoing note */
+.research__ongoing {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-6);
+  border-left: 2px solid var(--gold);
+  background: rgba(212,180,106,0.05);
+  color: rgba(250,247,240,0.55);
+}
+.research__ongoing svg {
+  flex-shrink: 0;
+  color: var(--gold);
+  margin-top: 2px;
+}
+.research__ongoing p {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+
+/* ── 6. ACADEMIC EXCELLENCE — HERO + MILESTONES ─────────────────────────── */
+
+/* Batch Topper hero stat */
+.academic__hero {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--sp-10) var(--sp-8);
+  background: linear-gradient(135deg, var(--butter) 0%, rgba(244,230,166,0.4) 100%);
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--sp-12);
+}
+[data-theme="dark"] .academic__hero {
+  background: linear-gradient(135deg, var(--butter-mid) 0%, rgba(74,64,32,0.3) 100%);
+  border-color: var(--gold-dim);
+}
+.academic__hero-badge {
+  color: var(--color-gold-deep);
+  flex-shrink: 0;
+}
+[data-theme="dark"] .academic__hero-badge {
+  color: var(--gold);
+}
+.academic__hero-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--sp-2);
+}
+.academic__hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-2);
+}
+.academic__hero-sub {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Milestone timeline */
+.academic__milestones {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 80px;
+}
+/* Vertical axis line */
+.academic__milestones::before {
+  content: '';
+  position: absolute;
+  left: 52px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--gold) 0%, rgba(212,180,106,0.2) 100%);
+}
+.academic__milestone {
+  display: grid;
+  grid-template-columns: 0 16px 1fr;
+  gap: 0 var(--sp-6);
+  align-items: flex-start;
+  padding: var(--sp-5) 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.academic__milestone:last-child {
+  border-bottom: none;
+}
+.academic__milestone-year {
+  position: absolute;
+  left: -80px;
+  top: var(--sp-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.10em;
+  color: var(--text-meta);
+  width: 40px;
+  text-align: right;
+}
+.academic__milestone-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--beige-dark);
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+  margin-top: 4px;
+  position: relative;
+  left: -4px;
+  transition: background var(--dur-mid);
+}
+.academic__milestone-dot--gold {
+  background: var(--gold);
+}
+.academic__milestone:hover .academic__milestone-dot {
+  background: var(--gold);
+}
+.academic__milestone-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding-bottom: var(--sp-1);
+}
+.academic__milestone-icon {
+  color: var(--gold-dim);
+  margin-bottom: var(--sp-2);
+}
+.academic__milestone-title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.academic__milestone-detail {
+  font-size: var(--text-xs);
+  color: var(--text-meta);
+  line-height: 1.55;
+}
+
+
+/* ── 7. RESPONSIVE ADDITIONS ─────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  /* Experience cards: stack vertically */
+  .exp__card,
+  .exp__card--minor {
+    grid-template-columns: 1fr;
+  }
+  .exp__card-logo {
+    min-height: 120px;
+  }
+  .exp__card-body {
+    padding: var(--sp-6);
+  }
+  .exp__card-logo-letter {
+    font-size: 3.5rem;
+  }
+
+  /* Research pub grid */
+  .research__pub-grid {
+    grid-template-columns: 1fr;
+  }
+  .research__methods {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Academic milestones */
+  .academic__milestones {
+    padding-left: 60px;
+  }
+  .academic__milestones::before {
+    left: 38px;
+  }
+  .academic__milestone-year {
+    left: -58px;
+    width: 34px;
+  }
+
+  /* About traits */
+  .about__trait-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about__trait-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .academic__hero {
+    flex-direction: column;
+    gap: var(--sp-4);
+    text-align: center;
+  }
+  .academic__milestones {
+    padding-left: 0;
+  }
+  .academic__milestones::before {
+    display: none;
+  }
+  .academic__milestone {
+    grid-template-columns: 1fr;
+    padding-left: var(--sp-4);
+  }
+  .academic__milestone-year {
+    position: static;
+    width: auto;
+    text-align: left;
+    font-size: var(--text-2xs);
+    margin-bottom: var(--sp-1);
+  }
+  .academic__milestone-dot {
+    display: none;
+  }
+  .research__interests-row {
+    gap: var(--sp-2);
+  }
+  .research__methods {
+    padding: var(--sp-4);
+    gap: var(--sp-4);
+  }
+}
