@@ -3571,3 +3571,542 @@ footer {
     gap: var(--sp-4);
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VISUAL OVERHAUL v3
+   ─────────────────────────────────────────────────────────────────────────
+   Fixes:
+   A. Kill all white-on-dark and dark-on-dark unreadable text
+   B. Research → warm light section (beige bg, navy text)
+   C. Academic Excellence → subtle, not heroic
+   D. Global color warmth — yellow, beige, readable navy
+   E. Infographic elements for leadership, certs, beyond, analytics
+   F. Funky modern: rounded cards, pill tags, color blocks
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. GLOBAL TOKEN PATCH — warm readable palette ──────────────────────── */
+:root {
+  --warm-beige:    #F5F0E0;
+  --warm-yellow:   #F4E6A6;
+  --warm-yellow-2: #FAEFC5;
+  --warm-yellow-3: #FDF6DC;
+  --navy-text:     #1E2D4A;
+  --navy-mid:      #2B3A5C;
+  --navy-light:    #3D506E;
+  --slate-dark:    #3A4352;
+  --teal-accent:   #2A7B8C;
+  --teal-light:    #E3F4F7;
+  --coral-accent:  #E07B5A;
+  --coral-light:   #FDF0EB;
+  --sage-accent:   #4A7C6B;
+  --sage-light:    #E6F2EE;
+  --radius-xl:     16px;
+  --radius-2xl:    24px;
+  --radius-pill:   999px;
+}
+
+/* ── B. SECTION BACKGROUNDS — full palette shift ────────────────────────── */
+
+/* Hero: warm cream */
+.section--hero { background: var(--warm-beige); }
+.section--hero::before { background: var(--warm-yellow-3); }
+
+/* About: clean ivory */
+.section--about { background: #FEFCF7; }
+
+/* Education: warm yellow tint */
+.section--education { background: var(--warm-yellow-3); }
+.section--education .section__title { color: var(--navy-text); }
+
+/* Work: beige */
+.section--work { background: var(--warm-beige); }
+
+/* Experience: clean warm white */
+.section--experience { background: #FEFCF8; }
+
+/* Research: LIGHT — no more dark background */
+.section--research { background: var(--warm-yellow-3); }
+.section--research .section__title { color: var(--navy-text); }
+.section--research .section__index { color: rgba(30,45,74,0.3); }
+.section--research .section__header { border-color: rgba(30,45,74,0.12); }
+.section--research .section__subtitle { color: var(--navy-mid); }
+
+/* Analytics: butter yellow */
+.section--analytics { background: var(--warm-yellow-2); }
+
+/* Creative: light beige */
+.section--creative { background: #FAF8F2; }
+
+/* Leadership: warm beige */
+.section--leadership { background: var(--warm-beige); }
+
+/* Beyond: cream */
+.section--beyond { background: #FEFCF7; }
+
+/* Certs: yellow tint */
+.section--certs { background: var(--warm-yellow-3); }
+
+/* Academic: subtle beige — not yellow */
+.section--academic { background: #F8F5EE; }
+
+/* Contact: keep dark but use warmer dark */
+.section--contact { background: var(--navy-text); }
+
+/* Nav: warm cream */
+#site-header { background: rgba(245,240,224,0.95); }
+[data-theme="dark"] #site-header { background: rgba(15,20,32,0.96); }
+
+/* ── C. RESEARCH SECTION — LIGHT TREATMENT ──────────────────────────────── */
+
+/* All research text now navy on light */
+.section--research .research__interests-row { margin-bottom: var(--sp-8); }
+.section--research .research__interest-pill {
+  color: var(--navy-mid);
+  background: rgba(30,45,74,0.07);
+  border-color: rgba(30,45,74,0.18);
+}
+.section--research .research__interest-pill svg { color: var(--teal-accent); }
+
+.section--research .research__methods {
+  background: rgba(255,255,255,0.6);
+  border-color: rgba(30,45,74,0.12);
+}
+.section--research .research__method-icon { color: var(--navy-mid); opacity: 0.6; }
+.section--research .research__method--result .research__method-icon {
+  color: var(--teal-accent);
+  opacity: 1;
+}
+.section--research .research__method-label { color: var(--navy-mid); opacity: 0.65; }
+.section--research .research__method--result .research__method-label {
+  color: var(--teal-accent);
+  opacity: 1;
+}
+.section--research .research__method-sep { color: rgba(30,45,74,0.25); }
+
+/* Publication cards — light */
+.section--research .research__pub-card {
+  background: #fff;
+  border-color: rgba(30,45,74,0.12);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(30,45,74,0.06);
+}
+.section--research .research__pub-card:hover {
+  border-color: var(--teal-accent);
+  box-shadow: 0 8px 24px rgba(42,123,140,0.12);
+}
+/* Replace dark SVG covers with light illustrated banners */
+.section--research .research__pub-cover {
+  background: linear-gradient(135deg, var(--warm-yellow-2) 0%, var(--teal-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.section--research .research__pub-cover svg rect[fill="#14213D"],
+.section--research .research__pub-cover svg rect[fill="#1C2436"] {
+  fill: transparent;
+}
+/* Override: inject light cover pattern via pseudo */
+.section--research .research__pub-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+}
+.section--research .research__pub-body { padding: var(--sp-6); }
+.section--research .research__pub-type { color: var(--teal-accent); }
+.section--research .research__pub-title {
+  color: var(--navy-text);
+  font-size: var(--text-xl);
+}
+.section--research .research__pub-abstract { color: var(--navy-mid); opacity: 0.8; }
+.section--research .research__pub-method { color: var(--slate-dark); opacity: 0.6; }
+
+/* Ongoing note — light treatment */
+.section--research .research__ongoing {
+  background: rgba(42,123,140,0.06);
+  border-left-color: var(--teal-accent);
+  color: var(--navy-mid);
+}
+.section--research .research__ongoing svg { color: var(--teal-accent); }
+.section--research .research__ongoing p { color: var(--navy-mid); }
+
+/* ── D. ACADEMIC EXCELLENCE — SUBTLE, NOT HEROIC ────────────────────────── */
+
+/* Remove the big hero block entirely — replace with quiet inline badge */
+.academic__hero {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-6);
+  background: rgba(30,45,74,0.04);
+  border: 1px solid rgba(30,45,74,0.10);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--sp-10);
+  width: fit-content;
+}
+.academic__hero-badge { display: none; }
+.academic__hero-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  opacity: 0.55;
+  margin-bottom: 0;
+}
+.academic__hero-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--navy-text);
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.academic__hero-sub {
+  font-size: var(--text-xs);
+  color: var(--navy-mid);
+  opacity: 0.6;
+  display: none; /* keep it clean */
+}
+
+/* Milestone dots: smaller, warmer */
+.academic__milestone-dot {
+  background: #fff;
+  border-color: var(--navy-mid);
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+.academic__milestone-dot--gold {
+  background: var(--navy-mid);
+  border-color: var(--navy-mid);
+  opacity: 1;
+}
+.academic__milestones::before {
+  background: linear-gradient(180deg, rgba(30,45,74,0.25) 0%, rgba(30,45,74,0.05) 100%);
+}
+.academic__milestone-icon { display: none; } /* remove star icons — too loud */
+.academic__milestone-title {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--navy-text);
+}
+.academic__milestone-detail { color: var(--navy-light); opacity: 0.7; }
+.academic__milestone-year { color: var(--navy-light); opacity: 0.55; }
+
+/* ── E. FUNKY MODERN REDESIGN — cards, pills, color blocks ──────────────── */
+
+/* Nav identity — warmer */
+.nav-name { color: var(--navy-text); }
+.nav-links a { color: var(--navy-mid); }
+.nav-links a:hover, .nav-links a.is-active {
+  color: var(--navy-text);
+  border-color: var(--teal-accent);
+}
+.nav-cta { background: var(--navy-text); }
+#theme-toggle { border-color: rgba(30,45,74,0.2); color: var(--navy-mid); }
+
+/* Hero text — navy on warm cream */
+.hero__name { color: var(--navy-text); }
+.hero__opening { color: var(--navy-mid); }
+.hero__link--primary { background: var(--navy-text); color: #fff; }
+.hero__link--secondary {
+  border-color: rgba(30,45,74,0.22);
+  color: var(--navy-mid);
+}
+.hero__link--secondary:hover { border-color: var(--teal-accent); color: var(--navy-text); }
+.hero__meta-label { color: var(--navy-light); opacity: 0.55; }
+.hero__meta-value { color: var(--navy-text); }
+.hero__meta-sub { color: var(--navy-mid); opacity: 0.65; }
+.hero__meta-item { border-color: rgba(30,45,74,0.10); }
+.hero__rule { background: linear-gradient(90deg, var(--teal-accent) 0%, transparent 60%); opacity: 0.25; }
+
+/* Section headers — navy text everywhere */
+.section__title { color: var(--navy-text); }
+.section__index { color: rgba(30,45,74,0.28); }
+.section__header { border-color: rgba(30,45,74,0.10); }
+.section__subtitle { color: var(--navy-mid); }
+
+/* About traits — pill style */
+.about__trait {
+  background: #fff;
+  border-radius: var(--radius-pill);
+  border-color: rgba(30,45,74,0.12);
+}
+.about__trait:hover {
+  background: var(--teal-light);
+  border-color: var(--teal-accent);
+}
+.about__trait-icon { color: var(--teal-accent); }
+.about__trait span { color: var(--navy-mid); }
+.about__text p { color: var(--navy-mid); }
+
+/* Education — navy on warm yellow */
+.edu__institution { color: var(--navy-text); }
+.edu__degree { color: var(--navy-text); }
+.edu__specialisation { color: var(--navy-mid); }
+.edu__period { color: var(--navy-light); }
+.edu__location { color: var(--navy-light); }
+.edu__distinctions li {
+  background: rgba(255,255,255,0.6);
+  border-color: rgba(30,45,74,0.12);
+  color: var(--navy-mid);
+}
+.edu__node-marker { background: var(--teal-accent); border-color: var(--warm-yellow-3); }
+.edu__node--primary .edu__node-marker { background: var(--navy-text); border-color: var(--warm-yellow-3); }
+.education__timeline::before {
+  background: linear-gradient(180deg, var(--teal-accent) 0%, rgba(42,123,140,0.15) 100%);
+}
+
+/* Work cards — funky: colored top strip per card */
+.work__grid {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border-color: rgba(30,45,74,0.10);
+}
+.work__card {
+  background: #fff;
+  border-color: rgba(30,45,74,0.08);
+  border-radius: 0;
+}
+.work__card:hover { background: var(--warm-yellow-3); }
+.work__card-icon {
+  background: var(--teal-light);
+  color: var(--teal-accent);
+  border-radius: var(--radius-pill);
+}
+.work__card:nth-child(1) .work__card-icon { background: var(--teal-light);   color: var(--teal-accent); }
+.work__card:nth-child(2) .work__card-icon { background: #E8F0FB;              color: var(--navy-mid); }
+.work__card:nth-child(3) .work__card-icon { background: var(--coral-light);   color: var(--coral-accent); }
+.work__card:nth-child(4) .work__card-icon { background: var(--sage-light);    color: var(--sage-accent); }
+.work__card:nth-child(5) .work__card-icon { background: #F0EBF8;              color: #6B4CA8; }
+.work__card:nth-child(6) .work__card-icon { background: var(--warm-yellow-2); color: var(--navy-text); }
+.work__card:nth-child(7) .work__card-icon { background: var(--coral-light);   color: var(--coral-accent); }
+.work__card:nth-child(8) .work__card-icon { background: var(--teal-light);    color: var(--teal-accent); }
+.work__card-title { color: var(--navy-text); }
+.work__card-desc  { color: var(--navy-mid); }
+.work__card-proof { color: var(--teal-accent); border-color: rgba(30,45,74,0.08); }
+.work__card-proof a { color: var(--teal-accent); }
+.work__evidence-label { color: var(--teal-accent); }
+
+/* Experience cards — on white bg, readable */
+.exp__card-org    { color: var(--navy-text); }
+.exp__card-role   { color: var(--navy-mid); }
+.exp__card-location { color: var(--navy-light); opacity: 0.7; }
+.exp__card-period { color: var(--navy-light); opacity: 0.6; }
+.exp__card-summary { color: var(--navy-mid); }
+.exp__outcome     { color: var(--navy-mid); }
+.exp__tag {
+  background: rgba(30,45,74,0.05);
+  border-color: rgba(30,45,74,0.12);
+  color: var(--navy-mid);
+  border-radius: var(--radius-pill);
+}
+.exp__card:hover .exp__tag {
+  background: var(--teal-light);
+  border-color: var(--teal-accent);
+  color: var(--teal-accent);
+}
+.exp__card { border-radius: 0; border-color: rgba(30,45,74,0.08); }
+.exp__card:nth-child(even) { background: var(--warm-beige); }
+.exp__card:hover { background: #FEFCE8; }
+
+/* Analytics — navy text on butter yellow */
+.section--analytics .section__title { color: var(--navy-text); }
+.section--analytics .analytics__intro p { color: var(--navy-mid); }
+.section--analytics .analytics__domain-name { color: var(--navy-text); }
+.section--analytics .analytics__domain-desc { color: var(--navy-mid); }
+.section--analytics .analytics__domain-tag {
+  border-color: rgba(30,45,74,0.18);
+  color: var(--navy-mid);
+  background: rgba(255,255,255,0.5);
+}
+.section--analytics .analytics__domain { border-color: rgba(30,45,74,0.10); }
+.section--analytics .analytics__tool-name { color: var(--navy-text); }
+.section--analytics .analytics__tool-note { color: var(--navy-light); }
+.section--analytics .analytics__bar-track { background: rgba(30,45,74,0.10); }
+.section--analytics .analytics__bar-fill {
+  background: linear-gradient(90deg, var(--teal-accent) 0%, var(--navy-mid) 100%);
+}
+.analytics__right {
+  background: rgba(255,255,255,0.55);
+  border-color: rgba(30,45,74,0.10);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(4px);
+}
+.analytics__right-heading { color: var(--teal-accent); border-color: rgba(30,45,74,0.10); }
+
+/* Creative — readable */
+.creative__item-title { color: var(--navy-text); }
+.creative__item-visual {
+  background: var(--warm-beige);
+  color: var(--navy-mid);
+}
+.creative__item:hover .creative__item-visual {
+  background: var(--teal-light);
+  color: var(--teal-accent);
+}
+.creative__filter-btn {
+  border-color: rgba(30,45,74,0.15);
+  color: var(--navy-mid);
+  border-radius: var(--radius-pill);
+}
+.creative__filter-btn:hover {
+  border-color: var(--teal-accent);
+  color: var(--teal-accent);
+}
+.creative__filter-btn.is-active {
+  background: var(--navy-text);
+  border-color: var(--navy-text);
+  color: #fff;
+}
+.creative__item-category { color: var(--teal-accent); }
+.creative__item-org { color: var(--navy-light); opacity: 0.65; }
+.creative__item {
+  border-color: rgba(30,45,74,0.10);
+  border-radius: var(--radius-lg);
+}
+.creative__item:hover {
+  border-color: var(--teal-accent);
+}
+.creative__archive-link a { color: var(--teal-accent); border-color: rgba(42,123,140,0.3); }
+.creative__archive-link a:hover { border-color: var(--teal-accent); }
+
+/* Leadership — navy on warm beige */
+.leadership__title { color: var(--navy-text); }
+.leadership__body p { color: var(--navy-mid); }
+.leadership__role-tag {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(30,45,74,0.12);
+  color: var(--navy-mid);
+  border-radius: var(--radius-pill);
+}
+.leadership__year { color: var(--navy-light); opacity: 0.55; }
+.leadership__item { border-color: rgba(30,45,74,0.08); }
+.leadership__item:hover { background: #FEFCE8; }
+.leadership__grid { border-color: rgba(30,45,74,0.08); border-radius: var(--radius-xl); overflow: hidden; }
+
+/* Beyond work — navy on cream */
+.beyond__item-title { color: var(--navy-text); }
+.beyond__item p { color: var(--navy-mid); }
+.beyond__item-label { color: var(--teal-accent); }
+.beyond__credential {
+  border-color: rgba(30,45,74,0.12);
+  color: var(--navy-mid);
+  border-radius: var(--radius-pill);
+}
+.beyond__item { border-color: rgba(30,45,74,0.08); }
+
+/* Certifications — navy on warm yellow */
+.cert__title { color: var(--navy-text); }
+.cert__detail { color: var(--navy-mid); opacity: 0.75; }
+.cert__issuer { color: var(--teal-accent); }
+.cert__year { color: var(--navy-light); opacity: 0.55; }
+.cert__card {
+  background: rgba(255,255,255,0.65);
+  border-color: rgba(30,45,74,0.10);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(4px);
+}
+.cert__card:hover { border-color: var(--teal-accent); box-shadow: 0 4px 16px rgba(42,123,140,0.10); }
+.cert__status { color: var(--teal-accent); border-color: rgba(42,123,140,0.35); border-radius: var(--radius-pill); }
+
+/* Academic Excellence — navy on beige */
+.academic__item-title { color: var(--navy-text); }
+.academic__item-detail { color: var(--navy-mid); opacity: 0.72; }
+.academic__item-year { color: var(--navy-light); opacity: 0.5; }
+.academic__band { border-color: rgba(30,45,74,0.08); }
+.academic__item { border-color: rgba(30,45,74,0.08); }
+.academic__item:hover { background: #FEFCE8; }
+.academic__hero {
+  border-color: rgba(30,45,74,0.12);
+  background: rgba(255,255,255,0.5);
+}
+.academic__hero-title { font-size: var(--text-sm); color: var(--navy-text); }
+
+/* ── F. INFOGRAPHIC UPGRADES ─────────────────────────────────────────────── */
+
+/* Leadership: convert text items into stat cards with color accent bar */
+.leadership__item {
+  border-top: 3px solid transparent;
+  transition: border-color var(--dur-mid), background var(--dur-mid);
+}
+.leadership__item:nth-child(1) { border-top-color: var(--teal-accent); }
+.leadership__item:nth-child(2) { border-top-color: var(--coral-accent); }
+.leadership__item:nth-child(3) { border-top-color: #6B4CA8; }
+.leadership__item:nth-child(4) { border-top-color: var(--sage-accent); }
+
+/* Certifications: color accent left border */
+.cert__card { border-left: 3px solid transparent; }
+.cert__card:nth-child(1) { border-left-color: #2A7B8C; }
+.cert__card:nth-child(2) { border-left-color: #4285F4; }
+.cert__card:nth-child(3) { border-left-color: var(--coral-accent); }
+.cert__card:nth-child(4) { border-left-color: var(--sage-accent); }
+
+/* Beyond work: add a warm illustrated background stripe */
+.beyond__item-title::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--teal-accent);
+  border-radius: 2px;
+  margin-bottom: var(--sp-3);
+}
+
+/* Hero meta panel: add subtle teal left border on hover */
+.hero__meta-item {
+  transition: background var(--dur-fast), border-left var(--dur-fast);
+  padding-left: var(--sp-3);
+  border-left: 2px solid transparent;
+}
+.hero__meta-item:hover {
+  background: rgba(42,123,140,0.04);
+  border-left-color: var(--teal-accent);
+}
+
+/* ── G. FIX WHITE-ON-WHITE & CONTRAST BUGS ──────────────────────────────── */
+
+/* Contact section: force all text white on dark */
+.section--contact .contact__closing-statement { color: rgba(255,255,255,0.90); }
+.section--contact .contact__note { color: rgba(255,255,255,0.55); }
+.section--contact .contact__detail-label { color: rgba(255,255,255,0.35); }
+.section--contact .contact__detail-value { color: rgba(255,255,255,0.80); }
+.section--contact .contact__detail-value a { color: var(--warm-yellow-2); }
+.section--contact .contact__detail { border-color: rgba(255,255,255,0.10); }
+.section--contact .section__index { color: rgba(255,255,255,0.2); }
+.section--contact .section__header { border-color: rgba(255,255,255,0.12); }
+
+/* Footer: force readable */
+footer { background: var(--navy-text); }
+.footer__name { color: rgba(255,255,255,0.65); }
+.footer__copy { color: rgba(255,255,255,0.28); }
+
+/* Nav — fix potential unreadable states */
+.nav-links a.is-active { color: var(--navy-text); }
+
+/* Modal — light theme */
+.creative__modal-inner { background: #fff; }
+.creative__modal-title { color: var(--navy-text); }
+.creative__modal-field-label { color: var(--teal-accent); }
+.creative__modal-field-value { color: var(--navy-mid); }
+.creative__modal-header { background: #fff; border-color: rgba(30,45,74,0.10); }
+.creative__modal-close { color: var(--navy-mid); border-color: rgba(30,45,74,0.15); }
+.creative__modal-close:hover { border-color: var(--navy-text); color: var(--navy-text); }
+.creative__modal { background: rgba(30,45,74,0.6); }
+
+/* Scroll progress — teal instead of gold */
+#scroll-progress { background: linear-gradient(90deg, var(--teal-accent) 0%, var(--navy-mid) 100%); }
+
+/* Back to top — teal */
+.back-to-top { background: var(--navy-text); color: #fff; }
+
+/* ── H. RESPONSIVE FIXES ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section--hero::before { display: none; }
+}
